@@ -10,10 +10,10 @@
         style="max-width: 60vw;min-width: 40vw"
     >
       <el-form-item label="Name" prop="name">
-        <el-input v-model="usr.name" placeholder="Enter your name"/>
+        <el-input v-model="usr.name" placeholder="Enter your name" clearable/>
       </el-form-item>
       <el-form-item label="Password" prop="password">
-        <el-input v-model="usr.password" placeholder="Enter your password" type="password" autocomplete="off"/>
+        <el-input v-model="usr.password" placeholder="Enter your password" type="password" autocomplete="off" clearable/>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="loginForm()">
@@ -28,6 +28,7 @@
 </template>
 
 <script>
+import {ElMessage} from "element-plus";
 
 export default {
   name: "LoginView",
@@ -74,7 +75,14 @@ export default {
           ).then((response) => {
             let userInfo = response.data;
             if (Object.keys(userInfo).length === 0) {
-              alert('用户名或者密码错误!!!');
+              ElMessage({
+                    message: '账户名或密码错误',
+                    type: 'error',
+                    showClose: true,
+                    grouping: true
+                  },
+                  this.resetForm()
+              );
             } else {
               this.$setSessionStorage('usr', userInfo);
               this.$router.push({path: '/about'});
@@ -86,8 +94,3 @@ export default {
   }
 }
 </script>
-
-
-<style scoped>
-
-</style>

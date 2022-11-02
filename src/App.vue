@@ -2,13 +2,10 @@
   <div class="common-layout">
     <nav>
     <el-container class="Wrapper">
-      <el-header class="Header" height="5vh">
+      <el-header class="Header" height="6vh">
         <el-row  align="middle" justify="center">
           <el-col :span="12">
-              <router-link to="/">登录</router-link>
-          </el-col>
-          <el-col :span="12">
-              <router-link to="/about">功能界面</router-link>
+            <router-link to="/about">学生信息管理</router-link>
           </el-col>
         </el-row>
       </el-header>
