@@ -1,5 +1,10 @@
 <template>
-  <el-table :data="usr" height="250" style="width: 100%" ref="getAll">
+  <el-table
+      :data="usr"
+      height="250"
+      width="80"
+      stripe=true
+      ref="getAll">
     <el-table-column prop="id" label="学号" width="180"/>
     <el-table-column prop="name" label="姓名" width="180"/>
     <el-table-column prop="age" label="年龄" width="180"/>

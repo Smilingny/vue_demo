@@ -1,14 +1,14 @@
 <template>
   <div>
-    <img alt="Vue logo" src="../assets/logo.png">
+    <el-card class="box-card">
     <el-form
         :rules="rules"
         :model="usr"
         :label-position="center"
         ref="loginForm"
-        label-width="100px"
-        style="max-width: 60vw;min-width: 40vw"
-    >
+        label-width="80px">
+<!--        style="max-width: 60vw;min-width: 20vw"-->
+<!--    >-->
       <el-form-item label="Name" prop="name">
         <el-input v-model="usr.name" placeholder="Enter your name" clearable/>
       </el-form-item>
@@ -22,8 +22,12 @@
         <el-button type="danger" @click="resetForm()">
           重置
         </el-button>
+        <el-button type="info" @click="registerForm()">
+          注册
+        </el-button>
       </el-form-item>
     </el-form>
+    </el-card>
   </div>
 </template>
 
@@ -90,7 +94,18 @@ export default {
           })
         }
       })
+    },
+    registerForm(){
+      this.$router.push({path: '/register'})
     }
   }
 }
 </script>
+
+<style>
+.box-card {
+  width: 400px;
+  margin: 50px auto ;
+  padding: 20px 10px;
+}
+</style>
