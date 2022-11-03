@@ -27,6 +27,14 @@ const routes = [
       auth: true,
     },
   },
+  {
+    path: '/all',
+    name: 'all',
+    component: () => import('../views/AllView.vue'),
+    meta: {
+      auth: true,
+    },
+  },
 ]
 
 const router = createRouter({
