@@ -39,10 +39,10 @@ export default {
   data (){
     return {
       info:[
-        '姓名',
         '学号',
-        '年龄',
-        '密码'
+        '姓名',
+        '密码',
+        '年龄'
       ],
       stuInfo: {
         idMessage: getSessionStorage('usr').id,

@@ -11,19 +11,35 @@
     <el-table-column prop="password" label="密码"/>
   </el-table>
 
-  <el-select v-model="delId" clearable placeholder="Select">
+  <el-select v-model="delId" clearable placeholder="选择需要删除的用户">
     <el-option
         v-for="item in usr"
         :key="item.name"
-        :label="item.id"
+        :label="item.name"
         :value="item.id"
     />
   </el-select>
-
-  <el-button @click="deleteOne" type="danger" round>删除用户</el-button>
+  <el-button v-if="delId === ''" type="danger" disabled>删除用户</el-button>
+  <el-button v-if="delId !== ''" @click="centerDialogVisible = true" type="danger" >删除用户</el-button>
+  <el-dialog
+      v-model="centerDialogVisible"
+      title="提示"
+      width="30%"
+      align-center
+  >
+    <span>确认删除用户？</span>
+    <template #footer>
+      <span class="dialog-footer">
+        <el-button @click="centerDialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="deleteOne">
+          确认
+        </el-button>
+      </span>
+    </template>
+  </el-dialog>
 </template>
 
-<script>
+<script >
 import {ElMessage} from "element-plus";
 
 export default {
@@ -31,6 +47,7 @@ export default {
   data() {
     this.getAll()
     return {
+      centerDialogVisible: false,
       usr: '',
       delId: ''
     }
@@ -55,6 +72,7 @@ export default {
           })
     },
     deleteOne() {
+      this.centerDialogVisible = false
       let aid = {id: this.delId}
       this.$axios.post('/student/delete', this.$qs.stringify(aid))
           .then((response) => {
