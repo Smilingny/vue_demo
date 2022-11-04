@@ -69,6 +69,7 @@ export default {
                 type: 'success',
                 grouping: true
               })
+              this.getAll()
             }
           })
     }
