@@ -1,6 +1,7 @@
 <template>
   <div class="common-layout">
     <nav>
+<!--      引入Element-Ui-Plus中的Container组件，确定网页基本页面结构-->
     <el-container class="Wrapper">
       <el-header class="Header" height="6vh">
         <el-row  align="middle" justify="center">

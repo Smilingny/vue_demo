@@ -1,4 +1,5 @@
 <template>
+<!--  表单输入用户注册需要填写的信息-->
   <el-form
       ref="registerForm"
       :model="usr"
@@ -21,6 +22,7 @@
     <el-form-item label="Age" prop="age">
       <el-input v-model.number="usr.age" oninput="value=value.replace(/[^0-9.]/g,'')"/>
     </el-form-item>
+<!--    注册和重置按钮-->
     <el-form-item>
       <el-button type="primary" @click="registerForm">提交注册</el-button>
       <el-button @click="resetForm">重置</el-button>
@@ -75,6 +77,7 @@ export default {
       this.usr.password = '';
       this.usr.age = ''
     },
+    // 注册方法
     registerForm(){
       this.$refs.registerForm.validate(async (valid) =>{
         if (valid) {
@@ -89,6 +92,7 @@ export default {
                   })
                 }else{
                   this.$setSessionStorage('usr', userInfo);
+                  this.$router.push({path: '/about'});
                   ElMessage({
                     message: '注册成功',
                     type: 'success',

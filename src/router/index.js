@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import LoginView from "@/views/LoginView";
 import {getSessionStorage} from "@/Common";
 
+// meta.auth表示是否进行路由拦截
 const routes = [
   {
     path: '/',
@@ -50,6 +51,7 @@ const router = createRouter({
   routes
 })
 
+// 路由拦截：当sessionStorage中usr为空且页面meta属性中auth为true时需要先进行登录
 router.beforeEach((to,from, next) => {
   if (to.meta.auth) {
     if (getSessionStorage('usr')) {

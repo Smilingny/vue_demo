@@ -77,6 +77,7 @@ export default {
       this.usr.password = '';
       this.usr.age = ''
     },
+    // 修改方法
     changeForm(){
       this.$refs.changeForm.validate(async (valid) =>{
         if (valid) {

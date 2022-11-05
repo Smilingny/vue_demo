@@ -9,6 +9,7 @@
     <el-menu-item index="0" >{{stuInfo.nameMessage}}</el-menu-item>
     <div class="flex-grow" />
     <el-menu-item index="1">
+<!--      使用router-link导向其他页面-->
       <router-link to="/change" >修改信息</router-link>
     </el-menu-item>
     <el-menu-item index="2">
@@ -24,6 +25,7 @@
       <el-button class="button" text>{{stuInfo.idMessage}}</el-button>
     </div>
   </template>
+<!--    循环取出sessionStorage中的信息展示出来-->
     <div v-for="(value,key,index) in stuInfo" :key="index">
       {{info[index]}}:
       {{ value }}
@@ -44,6 +46,7 @@ export default {
         '密码',
         '年龄'
       ],
+      // 取出SessionStorage中的信息
       stuInfo: {
         idMessage: getSessionStorage('usr').id,
         nameMessage: getSessionStorage('usr').name,
